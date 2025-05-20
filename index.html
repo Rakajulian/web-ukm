@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Mas Asta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+        }
+
+        header {
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+        }
+
+        .card-hover:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    <header class="shadow p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-700">Warung Asta</h1>
+        <nav class="space-x-4">
+            <a href="#beranda" class="text-blue-600 hover:underline">Beranda</a>
+            <a href="#katalog" class="text-blue-600 hover:underline">Katalog</a>
+            <a href="#keranjang" class="text-blue-600 hover:underline">Keranjang</a>
+        </nav>
+    </header>
+
+    <section id="beranda" class="p-6 text-center">
+        <h2 class="text-3xl font-bold mb-2 text-blue-800">Selamat Datang di Warung Asta</h2>
+        <p class="text-gray-700 text-lg">Temukan produk terbaik dengan harga terjangkau!</p>
+    </section>
+
+    <section id="katalog" class="p-6">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-800">Katalog Produk</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow p-4 card-hover">
+                <img src="img/AIO Pride - All Over Vegetable Types Print Hawaiian Shirt.jpg" alt="Produk 1"
+                    class="w-full mb-2 rounded">
+                <h3 class="font-bold text-lg">AIO Pride - All Over Vegetable Types Print Hawaiian Shirt</h3>
+                <p class="text-gray-600">Rp500.000</p>
+                <button class="tambah-btn mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    data-nama="AIO Pride - All Over Vegetable Types Print Hawaiian Shirt" data-harga="500000">Tambah ke
+                    Keranjang</button>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4 card-hover">
+                <img src="img/AIO Pride - Mushroom Pattern Hawaiian Shirt (1).jpg" alt="Produk 2"
+                    class="w-full mb-2 rounded">
+                <h3 class="font-bold text-lg">AIO Pride - Mushroom Pattern Hawaiian Shirt</h3>
+                <p class="text-gray-600">Rp450.000</p>
+                <button class="tambah-btn mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    data-nama="AIO Pride - Mushroom Pattern Hawaiian Shirt" data-harga="450000">Tambah ke
+                    Keranjang</button>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4 card-hover">
+                <img src="img/VIEWON Men's Casual Aztec Print Button Down Woolen Long Sleeve Lightweight Lapel Western Shacket Jacket Coat.jpg"
+                    alt="Produk 3" class="w-full mb-2 rounded">
+                <h3 class="font-bold text-lg">VIEWON Men's Casual Aztec Print</h3>
+                <p class="text-gray-600">Rp.660.000</p>
+                <button class="tambah-btn mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    data-nama="VIEWON Men's Casual Aztec Print" data-harga="660000">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="keranjang" class="p-6">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-800">Keranjang Belanja</h2>
+        <ul id="daftar-keranjang" class="text-gray-700 space-y-2"></ul>
+        <p id="keranjang-kosong" class="text-gray-600">Keranjang masih kosong.</p>
+        <div id="checkout-section" class="mt-6 hidden">
+            <h3 class="text-lg font-semibold mb-2">Total Pembayaran: <span id="total-harga"
+                    class="text-green-600 font-bold"></span></h3>
+            <button id="checkout-btn"
+                class="mt-2 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">Checkout</button>
+        </div>
+    </section>
+
+    <section id="form-checkout" class="p-6 hidden">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-800">Formulir Checkout</h2>
+        <form id="checkout-form" class="bg-white shadow rounded-lg p-6 space-y-4 max-w-md">
+            <div>
+                <label class="block font-medium">Nama Lengkap</label>
+                <input type="text" id="nama" class="w-full border border-gray-300 rounded px-4 py-2" required>
+            </div>
+            <div>
+                <label class="block font-medium">Alamat Pengiriman</label>
+                <textarea id="alamat" class="w-full border border-gray-300 rounded px-4 py-2" required></textarea>
+            </div>
+            <div>
+                <label class="block font-medium">Metode Pembayaran</label>
+                <select id="metode" class="w-full border border-gray-300 rounded px-4 py-2" required>
+                    <option value="transfer">Transfer Bank</option>
+                    <option value="cod">Bayar di Tempat (COD)</option>
+                    <option value="ewallet">E-Wallet</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Konfirmasi
+                Pembayaran</button>
+        </form>
+    </section>
+
+    <section id="halaman-konfirmasi" class="p-6 hidden">
+        <h2 class="text-2xl font-semibold mb-4 text-green-700">Terima kasih atas pesanan Anda!</h2>
+        <p class="mb-2">Pesanan Anda sedang diproses. Berikut detail pesanan:</p>
+        <ul id="ringkasan-pesanan" class="text-gray-700 space-y-1 mb-4"></ul>
+        <p class="font-bold text-green-700">Total Pembayaran: <span id="total-konfirmasi"></span></p>
+    </section>
+
+    <footer class="text-center p-4 mt-10 border-t text-sm text-gray-500">
+        <p>&copy; 2025 Warung Asta. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const tombolTambah = document.querySelectorAll('.tambah-btn');
+        const daftarKeranjang = document.getElementById('daftar-keranjang');
+        const teksKosong = document.getElementById('keranjang-kosong');
+        const checkoutSection = document.getElementById('checkout-section');
+        const totalHargaEl = document.getElementById('total-harga');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const formCheckout = document.getElementById('form-checkout');
+        const checkoutForm = document.getElementById('checkout-form');
+        const halamanKonfirmasi = document.getElementById('halaman-konfirmasi');
+        const ringkasanPesanan = document.getElementById('ringkasan-pesanan');
+        const totalKonfirmasi = document.getElementById('total-konfirmasi');
+
+        let total = 0;
+        const keranjang = [];
+
+        tombolTambah.forEach(button => {
+            button.addEventListener('click', () => {
+                const nama = button.getAttribute('data-nama');
+                const harga = parseInt(button.getAttribute('data-harga'));
+
+                const item = { nama, harga };
+                keranjang.push(item);
+
+                const itemEl = document.createElement('li');
+                itemEl.className = 'flex items-center justify-between gap-2';
+                itemEl.innerHTML = `
+          <span><i class="ph ph-shopping-cart text-blue-600"></i> ${nama} - Rp${harga.toLocaleString('id-ID')}</span>
+          <button class="hapus-btn text-red-600 hover:text-red-800"><i class="ph ph-trash"></i></button>
+        `;
+                daftarKeranjang.appendChild(itemEl);
+
+                total += harga;
+                totalHargaEl.textContent = `Rp${total.toLocaleString('id-ID')}`;
+                teksKosong.style.display = 'none';
+                checkoutSection.classList.remove('hidden');
+
+                itemEl.querySelector('.hapus-btn').addEventListener('click', () => {
+                    daftarKeranjang.removeChild(itemEl);
+                    const index = keranjang.indexOf(item);
+                    if (index > -1) keranjang.splice(index, 1);
+                    total -= harga;
+                    totalHargaEl.textContent = `Rp${total.toLocaleString('id-ID')}`;
+
+                    if (keranjang.length === 0) {
+                        teksKosong.style.display = 'block';
+                        checkoutSection.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            document.getElementById('keranjang').classList.add('hidden');
+            formCheckout.classList.remove('hidden');
+        });
+
+        checkoutForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('nama').value.trim();
+            const alamat = document.getElementById('alamat').value.trim();
+            const metode = document.getElementById('metode').value;
+
+            if (!nama || !alamat || !metode) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Form tidak lengkap',
+                    text: 'Harap isi semua kolom sebelum melanjutkan.'
+                });
+                return;
+            }
+
+            formCheckout.classList.add('hidden');
+            halamanKonfirmasi.classList.remove('hidden');
+
+            ringkasanPesanan.innerHTML = '';
+            keranjang.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.nama} - Rp${item.harga.toLocaleString('id-ID')}`;
+                ringkasanPesanan.appendChild(li);
+            });
+
+            totalKonfirmasi.textContent = `Rp${total.toLocaleString('id-ID')}`;
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Pesanan berhasil diproses',
+                text: 'Terima kasih telah berbelanja di Warung Asta!'
+            });
+        });
+    </script>
+</body>
+
+</html>
